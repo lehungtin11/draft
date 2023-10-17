@@ -32,3 +32,5 @@ with cx_Oracle.connect(oracle_username, oracle_password, oracle_dsn) as connecti
             writer.writerows(result)
 
 print(f"Data from {oracle_username} has been written to {filename} successfully.")
+
+# Thông tin từ hệ thống khác
