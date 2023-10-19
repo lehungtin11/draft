@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RP_Call" pageWidth="1100" pageHeight="360" orientation="Landscape" columnWidth="1100" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="bce25906-d9d3-4b2d-aa59-052e3fd6a19c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Austdoor.jrdax"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_title" radius="0" vImageAlign="Bottom" fontName="TNM" fontSize="14" isBold="true">
+		<box topPadding="5"/>
+		<paragraph leftIndent="5"/>
+	</style>
+	<style name="table_data" fontName="TNM" fontSize="12">
+		<box topPadding="5" leftPadding="5"/>
+	</style>
+	<subDataset name="dbcall" uuid="0da4ba0e-99a7-4cae-a89f-a4fb18333893">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Austdoor.jrdax"/>
+		<parameter name="From" class="java.lang.String"/>
+		<parameter name="To" class="java.lang.String"/>
+		<parameter name="Agent" class="java.lang.String"/>
+		<parameter name="Trunk" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[call api.rp_call( $P{From}, $P{To}, $P{Agent}, $P{Trunk} )]]>
+		</queryString>
+		<field name="title" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="title"/>
+			<property name="com.jaspersoft.studio.field.label" value="title"/>
+		</field>
+		<field name="c_status_log_text" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="c_status_log_text"/>
+			<property name="com.jaspersoft.studio.field.label" value="c_status_log_text"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tmp_xcall_cb"/>
+		</field>
+		<field name="chuaxl" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.name" value="chuaxl"/>
+			<property name="com.jaspersoft.studio.field.label" value="chuaxl"/>
+		</field>
+		<field name="xlThanhCong" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.name" value="xlThanhCong"/>
+			<property name="com.jaspersoft.studio.field.label" value="xlThanhCong"/>
+		</field>
+		<field name="xlThatBai" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.name" value="xlThatBai"/>
+			<property name="com.jaspersoft.studio.field.label" value="xlThatBai"/>
+		</field>
+		<field name="tong" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="tong"/>
+			<property name="com.jaspersoft.studio.field.label" value="tong"/>
+		</field>
+		<variable name="sum_tong" class="java.lang.Integer" resetType="Group" resetGroup="title" calculation="Sum">
+			<variableExpression><![CDATA[$F{tong}]]></variableExpression>
+		</variable>
+		<variable name="sum_tc" class="java.lang.Integer" resetType="Group" resetGroup="title" calculation="Sum">
+			<variableExpression><![CDATA[$F{xlThanhCong}]]></variableExpression>
+		</variable>
+		<variable name="sum_tb" class="java.lang.Integer" resetType="Group" resetGroup="title" calculation="Sum">
+			<variableExpression><![CDATA[$F{xlThatBai}]]></variableExpression>
+		</variable>
+		<variable name="sum_cxl" class="java.lang.Integer" resetType="Group" resetGroup="title" calculation="Sum">
+			<variableExpression><![CDATA[$F{chuaxl}]]></variableExpression>
+		</variable>
+		<group name="title">
+			<groupExpression><![CDATA[$F{title}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="From" class="java.lang.String"/>
+	<parameter name="To" class="java.lang.String"/>
+	<parameter name="Agent" class="java.lang.String"/>
+	<parameter name="Trunk" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select '' a]]>
+	</queryString>
+	<field name="a" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="a"/>
+		<property name="com.jaspersoft.studio.field.label" value="a"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="134">
+			<staticText>
+				<reportElement x="0" y="0" width="1100" height="60" uuid="9c18dcc9-1b33-4640-a411-241d93b15391"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TNM" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BÁO CÁO CUỘC GỌI]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="60" width="1100" height="30" uuid="2a9529bc-030a-4cb3-b922-c67e269d9da6"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Từ ngày " +$P{From} + "  đến ngày  " +  $P{To}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="550" y="90" width="550" height="39" uuid="6ac5e5a6-26a3-4121-8244-001feeb23aa4"/>
+				<textElement textAlignment="Right">
+					<font fontName="TNM"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Xuất báo cáo ngày  " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="90" width="550" height="24" uuid="32956373-be0b-4c20-bc2a-abfc66bba08b"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="TNM" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Theo agent:  " + $P{Agent}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="114" width="550" height="20" uuid="34e44172-0de0-4a0f-bd50-883290f20b86"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="TNM" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Theo đầu số: " + $P{Trunk}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="91" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="1100" height="90" uuid="fd40c87a-f3df-49e0-a8f4-755827d8cabd">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.components.autoresize.proportional" value="true"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="dbcall" uuid="6f5d5efe-337a-466c-bcb2-034b43f79a2b">
+						<datasetParameter name="From">
+							<datasetParameterExpression><![CDATA[$P{From}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="To">
+							<datasetParameterExpression><![CDATA[$P{To}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="Agent">
+							<datasetParameterExpression><![CDATA[$P{Agent}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="Trunk">
+							<datasetParameterExpression><![CDATA[$P{Trunk}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="1100" uuid="38baf35f-bb03-4b7f-97bb-6b6b9bd68410">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [5]"/>
+						<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1"/>
+						<jr:groupHeader groupName="title">
+							<jr:cell style="Table 1_CH" height="30" rowSpan="1">
+								<textField>
+									<reportElement style="table_title" x="0" y="0" width="789" height="30" uuid="0d66c202-2f62-4171-9177-46405fa27348"/>
+									<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+								</textField>
+							</jr:cell>
+						</jr:groupHeader>
+						<jr:column width="468" uuid="6f5c8c41-e9ca-45da-baef-5525647778e3">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+							<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="table_title" x="0" y="0" width="468" height="30" uuid="c24bd868-0187-40ae-8912-93e75ab5f9bb"/>
+									<text><![CDATA[Trạng thái cuộc gọi]]></text>
+								</staticText>
+							</jr:tableHeader>
+							<jr:groupFooter groupName="title">
+								<jr:cell style="Table 1_CH" height="30" rowSpan="1">
+									<staticText>
+										<reportElement style="table_data" x="0" y="0" width="339" height="30" uuid="8c95cd61-9ff0-4062-a25c-5d4731228552"/>
+										<text><![CDATA[Tổng số cuộc gọi]]></text>
+									</staticText>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:detailCell style="Table 1_TD" height="30">
+								<textField>
+									<reportElement style="table_data" x="0" y="0" width="468" height="30" uuid="fd69870a-3984-4918-a32f-5cd01302a92d"/>
+									<textFieldExpression><![CDATA[$F{c_status_log_text}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="152" uuid="c2eacfeb-1f8b-413b-9ce6-86866c987098">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+							<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="table_title" x="0" y="0" width="152" height="30" uuid="645e0ee2-fe5a-474a-af15-6d145dc21ae9"/>
+									<text><![CDATA[Chưa xử lý (%)]]></text>
+								</staticText>
+							</jr:tableHeader>
+							<jr:groupFooter groupName="title">
+								<jr:cell style="Table 1_CH" height="30" rowSpan="1"/>
+							</jr:groupFooter>
+							<jr:detailCell style="Table 1_TD" height="30">
+								<textField>
+									<reportElement style="table_data" x="0" y="0" width="152" height="30" uuid="ee1bc0dd-9198-4c1f-ba09-6076f7cc226c"/>
+									<textFieldExpression><![CDATA[$F{chuaxl}.doubleValue() == 0 ? "" : new DecimalFormat("##.0").format(($F{chuaxl}.doubleValue()/$F{tong}.doubleValue())*100) + "%"]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="139" uuid="8743efa3-4cc0-4575-8a37-e45ff584875d">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+							<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="table_title" x="0" y="0" width="139" height="30" uuid="392b4b40-6a55-4b9a-bf26-8c8e9cf69d7c"/>
+									<text><![CDATA[Thất bại (%)]]></text>
+								</staticText>
+							</jr:tableHeader>
+							<jr:groupFooter groupName="title">
+								<jr:cell style="Table 1_CH" height="30" rowSpan="1"/>
+							</jr:groupFooter>
+							<jr:detailCell style="Table 1_TD" height="30">
+								<textField>
+									<reportElement style="table_data" x="0" y="0" width="139" height="30" uuid="4c386e41-9620-42e1-b215-e8835e821af7"/>
+									<textFieldExpression><![CDATA[$F{xlThatBai}.doubleValue() == 0 ? "" : new DecimalFormat("##.0").format(($F{xlThatBai}.doubleValue()/$F{tong}.doubleValue())*100)+"%"]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="122" uuid="e361d047-67f0-4f1c-a59c-c42ba4df5dd6">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+							<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="table_title" x="0" y="0" width="122" height="30" uuid="146c27d3-febf-4137-8804-c8f535e74914"/>
+									<text><![CDATA[Thành công (%)]]></text>
+								</staticText>
+							</jr:tableHeader>
+							<jr:groupFooter groupName="title">
+								<jr:cell style="Table 1_CH" height="30" rowSpan="1"/>
+							</jr:groupFooter>
+							<jr:detailCell style="Table 1_TD" height="30">
+								<textField>
+									<reportElement style="table_data" x="0" y="0" width="122" height="30" uuid="692cd02d-e59f-4995-af37-e4df6af4da07"/>
+									<textFieldExpression><![CDATA[$F{xlThanhCong}.doubleValue() == 0 ? "" : new DecimalFormat("##.0").format(($F{xlThanhCong}.doubleValue()/$F{tong}.doubleValue())*100)+"%"]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="219" uuid="8625003a-310e-44ac-96a6-a30ad4b60fd9">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+							<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="table_title" x="0" y="0" width="219" height="30" uuid="4d6a1861-f1f2-4a7b-b2ae-39c86196e8ed"/>
+									<text><![CDATA[Tổng]]></text>
+								</staticText>
+							</jr:tableHeader>
+							<jr:groupFooter groupName="title">
+								<jr:cell style="Table 1_CH" height="30" rowSpan="1">
+									<textField>
+										<reportElement style="table_data" x="0" y="0" width="159" height="30" uuid="d240cefb-044c-4ecd-b431-9f94f9f81cb6"/>
+										<textFieldExpression><![CDATA[$V{sum_tong}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:detailCell style="Table 1_TD" height="30">
+								<textField>
+									<reportElement style="table_data" x="0" y="0" width="219" height="30" uuid="ff842c17-2751-42ec-83cc-3ebb9e703533"/>
+									<textFieldExpression><![CDATA[$F{tong}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

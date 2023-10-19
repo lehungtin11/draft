@@ -1,0 +1,53 @@
+CREATE DEFINER=`root`@`%` PROCEDURE `rp_call`(IN in_date_from longtext, IN in_date_to longtext, IN in_agent longtext, IN in_trunk longtext)
+BEGIN
+
+/*
+	DROP TABLE IF EXISTS api.tmp_trunk;
+	CREATE TEMPORARY TABLE api.tmp_trunk AS
+	SELECT c_trunk from jwdb.app_fd_sp_calls_par WHERE FIND_IN_SET(c_trunk, in_trunk) > 0 group by c_trunk;
+*/        
+
+	DROP TEMPORARY TABLE IF EXISTS api.tmp_trunk;
+    CREATE TEMPORARY TABLE api.tmp_trunk(c_trunk text);
+    WHILE LOCATE(',', in_trunk) > 1 DO
+        INSERT INTO api.tmp_trunk SELECT SUBSTRING_INDEX(in_trunk, ',', 1);
+        SET in_trunk = REPLACE(in_trunk, (SELECT LEFT(in_trunk, LOCATE(',', in_trunk))), '');
+    END WHILE;
+    INSERT INTO api.tmp_trunk(c_trunk) VALUES (in_trunk);
+    
+    drop TABLE IF  EXISTS api.tmp_xcall;
+	CREATE TEMPORARY TABLE IF NOT EXISTS api.tmp_xcall as
+	select c_call_id, c_trunk,c_dir_text,
+	case when c_status_log_text like 'Abandone Queue%' then 'Abandone Queue' 
+	-- when c_dir_text = 'Outbound' and c_status_log_text <> 'Answered' then 'Call_Fail' 
+	else c_status_log_text end c_status_log_text
+	,c_fkid_callback -- , count(*)
+	from jwdb.app_fd_sp_calls_par
+	where 
+	((c_trunk IN (select c_trunk from api.tmp_trunk) and coalesce(in_trunk,'') <> '' ) or (coalesce(in_trunk,'') = ''))
+	and ((c_so_ext = in_agent and coalesce(in_agent,'') <> '' ) or (coalesce(in_agent,'') = ''))
+	-- and c_s_start_time > DATE(in_date_from) and c_s_start_time < DATE(in_date_to) and c_hienthi = '1' and c_dir_text <> 'Internal' -- and c_status_log_text = 'Abandone Queue-NoAnswer' and c_trunk = '19006828'
+	and DATE(c_s_start_time) BETWEEN DATE(in_date_from) AND DATE(in_date_to) and c_hienthi = '1' and c_dir_text <> 'Internal' -- and c_status_log_text = 'Abandone Queue-NoAnswer' and c_trunk = '19006828'
+	group by c_call_id,c_trunk,c_dir_text,c_status_log_text,c_fkid_callback
+	;
+
+-- Abandone Queue-Reject
+drop TABLE IF  EXISTS api.tmp_xcall_cb;
+CREATE TEMPORARY TABLE IF NOT EXISTS api.tmp_xcall_cb as 
+select c.c_call_id, c.c_trunk,c.c_dir_text,c.c_status_log_text,c.c_fkid_callback, cb.c_Status
+from api.tmp_xcall c
+left join jwdb.app_fd_sp_callBack cb on c.c_fkid_callback = cb.id
+-- where  
+;
+
+select concat(c_dir_text, ' ',coalesce(c_trunk, '') ) title, -- c_trunk,c_dir_text,
+c_status_log_text, sum(case when c_Status in ('Mở mới') then 1 else 0 end) chuaxl
+, sum(case when c_Status in ('Đã xử lý thành công','KH đã gọi lại') then 1 else 0 end) xlThanhCong
+, sum(case when not c_Status in ('Đã xử lý thành công','KH đã gọi lại','Mở mới') then 1 else 0 end) xlThatBai
+, count(*) tong
+from api.tmp_xcall_cb
+group by c_trunk,c_dir_text,c_status_log_text
+order by c_dir_text, c_trunk
+;
+
+END
