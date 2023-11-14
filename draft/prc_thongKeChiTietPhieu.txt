@@ -1,0 +1,37 @@
+CREATE DEFINER=`root`@`%` PROCEDURE `prc_thongKeChiTietPhieu`(IN in_date_tu longtext, IN in_date_den longtext, IN in_kenh longtext, IN in_agent longtext)
+BEGIN
+	if coalesce(in_date_tu,'') <> '' and coalesce(in_date_den,'') <> ''
+    then 
+
+		DROP TABLE IF EXISTS api.tmp_kenh;
+        CREATE TEMPORARY TABLE api.tmp_kenh AS
+        SELECT id
+        FROM jwdb.app_fd_sp_su_ticket_tv_ktn
+        WHERE FIND_IN_SET(id,in_kenh) > 0;
+		
+        if coalesce(in_agent,'') <> ''
+        then
+				DROP TABLE IF EXISTS api.tmp_tk;
+				CREATE TEMPORARY TABLE IF NOT EXISTS api.tmp_tk AS (
+					SELECT DATE(dateCreated) as `dateCreated`, c_kenh_tiep_nhan, c_trangThai, c_fkNguoiXuLy,c_tenKH, c_noi_dung,
+                    concat('#',coalesce(c_MaTicket_Date,'') , coalesce(c_type_ticket,''), coalesce(c_MaTicket,'')) as ma
+					FROM jwdb.app_fd_sp_tickets
+					WHERE dateCreated BETWEEN in_date_tu AND in_date_den
+					AND c_kenh_tiep_nhan IN (select c_kenhTiepNhan from jwdb.app_fd_sp_su_ticket_tv_ktn where id in (select id from api.tmp_kenh))
+                    AND c_fkNguoiXuLy = in_agent
+				);
+        else
+			DROP TABLE IF EXISTS api.tmp_tk;
+			CREATE TEMPORARY TABLE IF NOT EXISTS api.tmp_tk AS (
+				SELECT DATE(dateCreated) as `dateCreated`, c_kenh_tiep_nhan, c_trangThai, c_fkNguoiXuLy,c_tenKH, c_noi_dung,
+                concat('#',coalesce(c_MaTicket_Date,'') , coalesce(c_type_ticket,''), coalesce(c_MaTicket,'')) as ma
+				FROM jwdb.app_fd_sp_tickets
+				WHERE dateCreated BETWEEN in_date_tu AND in_date_den
+				AND c_kenh_tiep_nhan IN (select c_kenhTiepNhan from jwdb.app_fd_sp_su_ticket_tv_ktn where id in (select id from api.tmp_kenh))
+			);
+        end if;
+        
+		select * from api.tmp_tk
+		;
+    end if;
+END
