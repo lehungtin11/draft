@@ -1,0 +1,86 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+.datalist-body-content {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: #666;
+    background-color: #fff;
+    padding: 15px;
+    line-height: 24px;
+}
+
+    .datalist-body-content button {
+        font-size: 12px;
+        line-height: 12px;
+        background-color: #ff671f;
+        color: #ffffff;
+        border: 1px solid #ff671f;
+        padding: 7px 15px;
+        white-space: nowrap;
+        text-align: center;
+        border-radius: 2px;
+    }
+
+    .datalist-body-content select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%239E9E9E' d='M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z'/%3E%3C/svg%3E");
+        background-position: 100% 50%;
+        background-repeat: no-repeat;
+        appearance: none;
+        background-color: #fff;
+        padding: 0 10px;
+        box-shadow: none;
+        box-sizing: border-box;
+        padding-right: 30px;
+    }
+
+        .datalist-body-content select:focus, .datalist-body-content input:focus {
+            border: 1px solid #ff671f;
+        }
+
+    .datalist-body-content select, .datalist-body-content input {
+        border: 1px solid #e6e6e6;
+        outline: 0;
+        border-radius: 2px;
+        height: 30px;
+        min-height: 30px;
+    }
+
+    .datalist-body-content input {
+        padding: 0 10px;
+        width: 150px;
+    }
+
+.fake-link {
+    color: #00AEC7;
+    cursor: pointer;
+    font-size: 120%;
+    margin-left: 0.6em;
+}
+
+.row-gap-15px {
+    row-gap: 15px;
+}
+
+.column-gap-10px {
+    column-gap: 10px;
+}
+
+#btn_tao_ticket {
+    background-color: #1E8449;
+    border-color: #145A32;
+}
+
+    #btn_tao_ticket:hover {
+        opacity: 0.8;
+    }
+
+.filter_nang_cao {
+    display: none;
+}
+
+#danh_sach th {
+    background: #34495E !important;
+    color: #f2f2f2 !important;
+    font-weight: normal;
+}
