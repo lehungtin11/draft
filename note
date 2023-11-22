@@ -1,0 +1,1 @@
+curl -X POST "http://10.68.4.67:8080/jw/api/process/process1/startProcess" -H "accept: application/json" -H "api_id: jwdb_API_CORE_API_BUILDER_PREVIEW_a6a1b0ee-e011-44e2-bfe0-605c890431dd" -H "api_key: ******************" -H "Content-Type: application/json" -d "{\"additionalProp1\":\"string\",\"additionalProp2\":\"string\",\"additionalProp3\":\"string\"}"
